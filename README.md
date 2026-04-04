@@ -19,7 +19,7 @@
 | Phase | 내용 | 방법 |
 |:---:|:---|:---|
 | 1 | 탐색적 데이터 분석 (EDA) | 기술통계, VIF, 상관관계 히트맵 |
-| 2 | 계층적 로지스틱 회귀 | statsmodels Logit, ΔR² 우도비 검정, 조절효과 시각화 |
+| 2 | 계층적 로지스틱 회귀 | statsmodels Logit, R² 우도비 검정, 조절효과 시각화 |
 | 3 | 머신러닝 모델 비교 | RF / XGBoost / LightGBM + SMOTENC + 5-Fold CV |
 | 4 | SHAP 분석 | TreeExplainer, Summary/Bar/Dependence Plot |
 
@@ -30,16 +30,6 @@
 - **조절효과**: 인증보유 × 고용노동부감독 상호작용항 유의미(OR=2.081, p=0.022) — 선택편향으로 해석
 - **최적 ML 모델**: Random Forest (F1=0.535, ROC-AUC=0.714)
 - **SHAP Top-3**: 기성공정률 > 외국인비율 > 공사종류
-
-## 실행 방법
-
-Google Colab에서 순서대로 실행:
-
-1. `notebooks/01_전처리.ipynb` — 원자료 전처리 및 `전처리_최종_v3.csv` 생성
-2. `notebooks/02_데이터분석.ipynb` — 전체 분석 파이프라인 실행
-
-> **데이터 경로**: 노트북은 `/content/` 경로 기준으로 작성되어 있습니다.
-> Colab 사용 시 원자료와 `data/전처리_최종.csv`를 `/content/`에 업로드하세요.
 
 ## 파일 구조
 
@@ -59,10 +49,3 @@ Safety-13th-Thesis-Competition/
 └── results/
     └── (분석 실행 후 생성되는 이미지/CSV 파일)
 ```
-
-## 주요 참고문헌
-
-- Thabtah, F., et al. (2020). Integrated statistical modeling and machine learning techniques with SHAP for epidemiological data analysis. *Elsevier*. [KEY PAPER]
-- Chawla, N. V., et al. (2002). SMOTE: Synthetic Minority Over-sampling Technique. *JAIR*, 16.
-- Lundberg, S. M., & Lee, S. I. (2017). A Unified Approach to Interpreting Model Predictions. *NeurIPS*, 30.
-- Obasi, S. N., et al. (2026). Machine learning for occupational accident analysis. *Safety Science*, Elsevier.
