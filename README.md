@@ -19,16 +19,22 @@
 | Phase | 내용 | 방법 |
 |:---:|:---|:---|
 | 1 | 탐색적 데이터 분석 (EDA) | 기술통계, VIF, 상관관계 히트맵 |
-| 2 | 계층적 로지스틱 회귀 | statsmodels Logit, R² 우도비 검정, 조절효과 시각화 |
+| 2 | 계층적 로지스틱 회귀 | statsmodels Logit, ΔR² 우도비 검정, 조절효과 시각화 |
+| 2+ | LR 타당성 검증 | Hosmer-Lemeshow 검정, FDR 보정, 표준화 OR |
 | 3 | 머신러닝 모델 비교 | RF / XGBoost / LightGBM + SMOTENC + 5-Fold CV |
-| 4 | SHAP 분석 | TreeExplainer, Summary/Bar/Dependence Plot |
+| 3+ | ML 타당성 검증 | Bootstrap 95% CI, McNemar 검정, Sensitivity Analysis (5 seeds), Ablation Study |
+| 4 | SHAP 분석 | TreeExplainer, Summary/Bar/Dependence Plot, LR-SHAP 교차검증 |
+| 4+ | 변수중요도 삼중검증 | SHAP × Permutation Importance × LR p-value |
 
 ## 주요 결과
 
-- **독립변수**: 정리정돈상태(OR=0.792, p=0.031)만 유의미 — 형식적 관리체계보다 현장의 실질적 행동이 중요
-- **통제변수**: 공사규모, 기성공정률, 공사종류, 외국인비율이 사고발생에 가장 강한 영향
+- **독립변수**: 정리정돈상태(OR=0.792, p=0.031) — FDR 보정 후 p=0.098(10% 수준), SHAP·PI 삼중 교차검증으로 보호 효과 경향 지지
+- **통제변수**: 공사규모, 기성공정률, 공사종류, 외국인비율이 사고발생에 가장 강한 영향 (FDR 보정 후에도 유의미)
 - **조절효과**: 인증보유 × 고용노동부감독 상호작용항 유의미(OR=2.081, p=0.022) — 선택편향으로 해석
-- **최적 ML 모델**: Random Forest (F1=0.535, ROC-AUC=0.714)
+- **최적 ML 모델**: Random Forest — F1=0.543 (95% CI: 0.455–0.621), ROC-AUC=0.714, McNemar p=0.0303으로 XGBoost 대비 유의미한 우위
+- **모델 안정성**: Sensitivity Analysis (5 seeds) F1=0.551±0.019 — seed 의존성 없음
+- **SMOTENC 검증**: Ablation Study에서 SMOTENC가 class_weight 대비 Recall 5.7%p 추가 향상 확인
+- **LR 모형 적합**: Hosmer-Lemeshow p=0.2017 — Model 4 적합도 검증 통과
 - **SHAP Top-3**: 기성공정률 > 외국인비율 > 공사종류
 
 ## 파일 구조
@@ -43,8 +49,9 @@ Safety-13th-Thesis-Competition/
 │   ├── 01_전처리.ipynb              # 원자료 → 전처리_최종_v3.csv
 │   └── 02_데이터분석.ipynb          # Phase 1~4 전체 분석
 ├── docs/
-│   ├── 데이터분석_과정_및_근거.md   # 분석 설계 및 결과 해석
+│   ├── 데이터분석_과정_및_근거.md   # 분석 설계 및 결과 해석 (SCI 검증 포함)
 │   ├── 전처리_근거_및_과정.md       # 전처리 단계별 근거
+│   ├── 통계_용어집.md               # 주요 통계 지표 해석 가이드
 │   └── 참고논문_정리.md             # 참고문헌 정리
 └── results/
     └── (분석 실행 후 생성되는 이미지/CSV 파일)
