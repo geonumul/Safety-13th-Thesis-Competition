@@ -46,7 +46,7 @@ Safety-13th-Thesis-Competition/
 ├── data/
 │   └── 전처리_최종.csv              # 전처리 완료 데이터 (1,375 × 17)
 ├── notebooks/
-│   ├── 01_전처리.ipynb              # 원자료 → 전처리_최종_v3.csv
+│   ├── 01_전처리.ipynb              # 원자료 → 전처리_최종.csv
 │   └── 02_데이터분석.ipynb          # Phase 1~4 전체 분석
 ├── docs/
 │   ├── 데이터분석_과정_및_근거.md   # 분석 설계 및 결과 해석 (SCI 검증 포함)
