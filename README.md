@@ -18,7 +18,7 @@
 
 | Phase | 내용 | 방법 |
 |:---:|:---|:---|
-| 1 | 탐색적 데이터 분석 (EDA) | 기술통계, VIF, 상관관계 히트맵 |
+| 1 | 탐색적 데이터 분석 (EDA) | 기술통계, 단변량 분석(변수별 사고발생률), VIF, 상관관계 히트맵 |
 | 2 | 계층적 로지스틱 회귀 | statsmodels Logit, ΔR² 우도비 검정, 조절효과 시각화 |
 | 2+ | LR 타당성 검증 | Hosmer-Lemeshow 검정, FDR 보정, 표준화 OR |
 | 3 | 머신러닝 모델 비교 | RF / XGBoost / LightGBM + SMOTENC + 5-Fold CV |
