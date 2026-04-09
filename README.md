@@ -54,5 +54,8 @@ Safety-13th-Thesis-Competition/
 │   ├── 통계_용어집.md               # 주요 통계 지표 해석 가이드
 │   └── 참고논문_정리.md             # 참고문헌 정리
 └── results/
-    └── (분석 실행 후 생성되는 이미지/CSV 파일)
+    ├── (02_데이터분석.ipynb 실행 시 자동 생성: 1_target_distribution.png ~ 17_shap_threshold_정리정돈.png 등 19개)
+    └── (supplementary) fig_death_type_50_120.png, fig_external_trend.png,
+                         fig_housekeeping_x_guidance.png, fig_moderation_by_scale.png
+                         — 조절효과 심층분석 추가 시각화 (재생성 코드 없음, 참고용 보관)
 ```
