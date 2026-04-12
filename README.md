@@ -28,13 +28,13 @@
 
 ## 주요 결과
 
-- **독립변수**: 정리정돈상태(OR=0.793, p=0.041) — 통제변수 구조 하에서 일관되게 유의하여 보호 효과 확인
-- **조절효과**: 인증보유 × 고용노동부감독 상호작용항 유의(OR=2.333, p=0.013) — 선택편향으로 해석
-- **최적 ML 모델**: XGBoost — F1=0.541, Recall=0.808, ROC-AUC=0.710 (Bootstrap 95% CI: F1 [0.463, 0.609], AUC [0.649, 0.774])
-- **모델 안정성**: Sensitivity Analysis (5 seeds) F1=0.533±0.015 — seed 의존성 없음
-- **SMOTENC 검증**: Ablation Study에서 SMOTENC 적용 시 Recall 0.718 → 0.808 (+0.090) 향상 확인
-- **LR 모형 적합**: Hosmer-Lemeshow p=0.5106 — Model 4 적합도 검증 통과
-- **변수중요도 삼중검증**: 기성률_1·_2, 공사규모_1이 SHAP·Permutation Importance·LR p-value 전부 일치
+- **독립변수**: 정리정돈상태(OR=0.800, p=0.047) — 통제변수 구조 하에서 일관되게 유의하여 보호 효과 확인
+- **조절효과**: 인증보유 × 고용노동부감독 상호작용항 유의(OR=2.411, p=0.009) — 선택편향으로 해석
+- **최적 ML 모델**: Random Forest — F1=0.544, AUC=0.725 (Bootstrap 95% CI: F1 [0.452, 0.622], AUC [0.661, 0.784])
+- **모델 안정성**: Sensitivity Analysis (5 seeds) F1=0.536±0.014 — seed 의존성 없음
+- **SMOTENC 검증**: Ablation Study에서 SMOTENC 적용 시 Recall 0.051 → 0.641 대폭 향상 확인
+- **LR 모형 적합**: Hosmer-Lemeshow p=0.0966 — Model 4 적합도 검증 통과
+- **변수중요도 삼중검증**: 기성률_1, 공사규모_1, 외국인비율이 SHAP·Permutation Importance·LR에서 일관되게 상위
 
 ## 파일 구조
 
